@@ -8,6 +8,7 @@ const Button = styled.button`
     color: #FFFFFF;
     border: none;
     border-radius: 4.6px;
+    opacity: ${(props)=> props.loading? "0.7": "1"};
 
     font-family: Lexend Deca;
     font-size: 21px;
