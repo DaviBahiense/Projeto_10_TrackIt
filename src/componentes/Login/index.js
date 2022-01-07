@@ -32,6 +32,7 @@ function Login() {
             alert("Verifique novamente email e senha")
             setLoading(false);
         })
+        setLoading(true);
 
     }
 
@@ -40,8 +41,8 @@ function Login() {
             <Conteudo>
                 <Logo />
                 <form onSubmit={tratandoLogin}>
-                    <Input type="email" placeholder='email' onChange={(e)=>setEmail(e.target.value)} value = {email} loading={loading}/>
-                    <Input type="password" placeholder='senha' onChange={(e)=>setSenha(e.target.value)} value = {senha} loading={loading}/>
+                    <Input type="email" placeholder='email' onChange={(e)=>setEmail(e.target.value)} value = {email} loading={loading} disabled={loading}/>
+                    <Input type="password" placeholder='senha' onChange={(e)=>setSenha(e.target.value)} value = {senha} loading={loading} disabled={loading}/>
                     <Button type="submit" loading={loading}> {
                         loading ? <Loader type="ThreeDots" color="#ffffff" height={50} width={60} /> : "Entrar"
                         }

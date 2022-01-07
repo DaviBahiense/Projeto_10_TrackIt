@@ -1,7 +1,7 @@
 
 import React, { useState }  from 'react';
 import {Conteudo} from './style';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
@@ -16,8 +16,8 @@ function Cadastro() {
     const [senha, setSenha] = useState('')
     const [nome, setNome] = useState('')
     const [img, setImg] = useState('')
-    const [loading, setLoading]= useState(false);
-
+    const [loading, setLoading]= useState(false)
+    const navegar = useNavigate()
 
     function tratandoCadastro(e){
         e.preventDefault()
@@ -28,7 +28,10 @@ function Cadastro() {
             image: img,
             password: senha
         })
-        promessa.then(resposta => console.log(resposta))
+        promessa.then((resposta)=>{
+            navegar('/')
+            console.log(resposta)
+        })
         setLoading(true)
         promessa.catch(erro => {
             alert("Verifique novamente os dados do cadastro")
@@ -41,13 +44,14 @@ function Cadastro() {
             <Conteudo>
                 <Logo />
                 <form onSubmit={tratandoCadastro}>
-                    <Input type="email" placeholder=' email' onChange={(e)=>setEmail(e.target.value)} value = {email} loading={loading}/>
-                    <Input type="password" placeholder=' senha' onChange={(e)=>setSenha(e.target.value)} value = {senha} loading={loading}/>
-                    <Input type="name" placeholder=' nome' onChange={(e)=>setNome(e.target.value)} value = {nome} loading={loading} />
-                    <Input type="text" placeholder=' foto' onChange={(e)=>setImg(e.target.value)} value = {img} loading={loading} />
+                    <Input type="email" placeholder=' email' onChange={(e)=>setEmail(e.target.value)} value = {email} loading={loading} disabled={loading}/>
+                    <Input type="password" placeholder=' senha' onChange={(e)=>setSenha(e.target.value)} value = {senha} loading={loading} disabled={loading}/>
+                    <Input type="name" placeholder=' nome' onChange={(e)=>setNome(e.target.value)} value = {nome} loading={loading} disabled={loading}/>
+                    <Input type="text" placeholder=' foto' onChange={(e)=>setImg(e.target.value)} value = {img} loading={loading} disabled={loading}/>
                     <Button type="submit" loading={loading}> {
                         loading ? <Loader type="ThreeDots" color="#ffffff" height={50} width={60} /> : "Cadastrar"
-                        }</Button>
+                        }
+                    </Button>
                     <Link to="/">Já tem uma conta? Faça login!</Link>
                 </form>
             </Conteudo>
