@@ -1,11 +1,10 @@
-
 import React, { useState }  from 'react';
-import {Conteudo} from './style';
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
+import {Conteudo} from './style';
 import Button from '../Button';
 import Input from '../Input'
 import Logo from '../Logo'
@@ -30,7 +29,6 @@ function Cadastro() {
         })
         promessa.then((resposta)=>{
             navegar('/')
-            console.log(resposta)
         })
         setLoading(true)
         promessa.catch(erro => {

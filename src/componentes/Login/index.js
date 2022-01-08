@@ -1,21 +1,21 @@
-
-import React, { useState }  from 'react';
-import {Conteudo} from './style';
-import {Link} from 'react-router-dom'
+import React, { useState, useContext }  from 'react';
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
+import  Context from "../Context"
+import {Conteudo} from './style';
 import Button from '../Button';
 import Input from '../Input'
 import Logo from '../Logo'
-
 
 function Login() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [loading, setLoading]= useState(false);
-   // const navigate = useNavigate()
+    const {setToken} = useContext(Context);
+    const navegar = useNavigate()
 
     function tratandoLogin(e){
         e.preventDefault()
@@ -25,7 +25,8 @@ function Login() {
             password: senha
         })
         promessa.then(resposta => {
-            alert("foi")
+            navegar('/hoje')
+            setToken(resposta.data.token);
         })
         setLoading(true)
         promessa.catch(()=>{
@@ -33,7 +34,6 @@ function Login() {
             setLoading(false);
         })
         setLoading(true);
-
     }
 
     return (
@@ -55,4 +55,3 @@ function Login() {
 }
 
 export default Login;
- 
