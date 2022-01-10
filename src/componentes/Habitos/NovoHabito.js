@@ -2,6 +2,8 @@ import {ConteudoNovoHabito, NovaInfo, Botao,Semana, Dia, Cancelar, Salvar} from 
 
 export default function NovoHabito(){
 
+    const semana = ["D", "S", "T" ,"Q", "Q", "S", "S"]
+
     return(
         <ConteudoNovoHabito>
             <NovaInfo>
@@ -9,11 +11,11 @@ export default function NovoHabito(){
                     <input placeholder="nome do hábito..."/> 
                 </Botao>
                 <Semana>
-                    <Dia>D</Dia> <Dia>S</Dia> <Dia>T</Dia> <Dia>Q</Dia> <Dia>Q</Dia> <Dia>S</Dia> <Dia>S</Dia>
+                    {semana.map((dia)=> <Dia>{dia}</Dia>)}
                 </Semana>
                 <Botao position="flex-end">
                     <Cancelar>Cancelar</Cancelar>
-                <Salvar>Salvar</Salvar>
+                    <Salvar>Salvar</Salvar>
                 </Botao>
             </NovaInfo>
         </ConteudoNovoHabito>
