@@ -6,4 +6,4 @@ const Conteudo = styled.div`
     margin-top: 68px;
     margin-botton: 32px;
 `
-export {Conteudo} 
+export default Conteudo

@@ -21,6 +21,4 @@ const Conteudo = styled.div `
     }
     `
     
-export{
-    Conteudo
-}
+export default Conteudo

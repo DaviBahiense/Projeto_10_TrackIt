@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import Login from './componentes/Login';
 import Cadastro from './componentes/Cadastro';
