@@ -1,11 +1,11 @@
-import React, { useState }  from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import React, { useState }  from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Login from './componentes/Login';
-import Cadastro from './componentes/Cadastro';
+import Login from './componentes/Login'
+import Cadastro from './componentes/Cadastro'
 import Hoje from './componentes/Hoje'
-import Context from "./componentes/Context";
+import Context from "./componentes/Context"
+import Habitos from './componentes/Habitos'
 
 export default function App(){
     const [token, setToken]= useState("");
@@ -17,7 +17,9 @@ export default function App(){
                 <Routes>
                     <Route path="/" element={<Login />} />    
                     <Route path="/cadastro" element={<Cadastro />} />   
-                    <Route path="/hoje" element={<Hoje />} />                
+                    <Route path="/hoje" element={<Hoje />} />
+                    <Route path="/habitos" element={<Habitos />} />
+
                 </Routes>
             </BrowserRouter>
         </Context.Provider>

@@ -26,11 +26,9 @@ function Login() {
         })
         promessa.then(resposta => {
             setToken(resposta.data.token);
-            
-        
-           navegar('/hoje')
+            navegar('/hoje')
         })
-      setLoading(true)
+            setLoading(true)
         promessa.catch(()=>{
             alert("Verifique novamente email e senha")
             setLoading(false);

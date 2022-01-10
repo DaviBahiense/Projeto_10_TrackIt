@@ -1,4 +1,4 @@
-import Conteudo from "./styles"
+import {Conteudo} from "./styles"
 import React from 'react';
 import image from './logo.png'
 

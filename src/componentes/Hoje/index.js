@@ -1,24 +1,30 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect,  useContext } from 'react'
+import axios from 'axios' 
 
 import Context from '../Context'
 import Topo from "../Topo"
 import Rodape from "../Rodape"
-import { Conteudo, AddHabito } from "./style"
 
 function Hoje(){
 
-    const { token, setProgresso } = useContext(Context);
-    console.log(token)
+    const { token } = useContext(Context)
+    console.log(token)           
+
+
+     useEffect(()=>{
+        const promessa = (axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }))
+        promessa.then((resposta)=>{console.log(resposta.data)
+        })
+    },[])
 
     return(
         <>
         <Topo />
-            <Conteudo>
-                <AddHabito>
-                    data
-                    <button>+</button>
-                </AddHabito>
-            </Conteudo>
+
         <Rodape />
         </>
     );
